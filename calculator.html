@@ -13,7 +13,7 @@
 <!-- 계산기 버튼 구현 -->
 <body>
   <input readonly id="operator">
-  <input readonly type="number" id="result">
+  <input readonly type="text" id="result">
   <div class="row">
     <button id="num-7">7</button>
     <button id="num-8">8</button>
@@ -72,6 +72,11 @@
     document.querySelector('#num-9').addEventListener('click',onClickNumber);
 
     const onClickoperator = (op) => () =>{
+      if(op === '-' && !numOne){
+        numOne = numOne + op;
+        $result.value = op;
+        return;
+      }
       if (numTwo){
         switch(operator){
           case '+' : 
@@ -98,6 +103,9 @@
         operator = op;
         $operator.value = op;
       } else{
+        if(operator == '-'){  
+
+        }
         
         alert('숫자를 먼저 입력하세요.');
       }
